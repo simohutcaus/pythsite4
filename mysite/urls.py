@@ -22,5 +22,6 @@ urlpatterns = [
     path('polls/', include('polls.urls')),
     path('hornsby/', hornsby, name="Hornsby"),
     path('nsydney/', nsydney, name="Nsydney"),
-    path('postcode', postcode, name="Postcode")
+    path('postcode', postcode, name="Postcode"),
+    path('/', include('polls.urls'))
 ]
