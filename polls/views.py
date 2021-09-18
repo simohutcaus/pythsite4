@@ -65,3 +65,16 @@ def postcode(request):
     data = json.loads(json_records)
     context = {'d': data}
     return render(request, 'polls/postcode.html', context)
+
+def unknown(request):
+    df = pd.read_csv('https://data.nsw.gov.au/data/dataset/97ea2424-abaf-4f3e-a9f2-b5c883f42b6a/resource/2776dbb8-f807-4fb2-b1ed-184a6fc2c8aa/download/confirmed_cases_table4_location_likely_source.csv')
+    cases = df
+    local = cases.loc[cases['likely_source_of_infection'] == 'Locally acquired - no links to known case or cluster']
+    local2 = local.loc[local['notification_date'] > '2021-06-16'] 
+    local2 = local2.iloc[::-1]
+    json_records = local2.reset_index().to_json(orient = 'records')
+    data = []
+    data = json.loads(json_records)
+    context = {'d': data}
+    
+    return render(request, 'polls/unknown.html', context)

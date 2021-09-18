@@ -14,5 +14,6 @@ urlpatterns = [
     path('<int:question_id>/vote/', views.vote, name='vote'),
     path('hornsby/', views.hornsby, name='hornsby'),
     path('nsydney/', views.nsydney, name='nsydney'),
-    path('postcode/', views.postcode, name='postcode')
+    path('postcode/', views.postcode, name='postcode'),
+    path('unknown/', views.unknown, name='unknown')
 ]
